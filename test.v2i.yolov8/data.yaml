@@ -1,0 +1,15 @@
+
+path: 'C:/Users/gmltn/OneDrive/바탕 화면/doosanpy/test.v2i.yolov8' # 데이터셋 루트 폴더
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 1
+names: ['milk']
+
+roboflow:
+  workspace: yoloboxpolybag
+  project: test-bz6r5
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/yoloboxpolybag/test-bz6r5/dataset/2
