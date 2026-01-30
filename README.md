@@ -4,7 +4,11 @@ YOLO-World 모델을 활용하여 별도의 학습 데이터 없이도 다양한
 두산 협동 로봇(Doosan Robot)을 제어하여 자동 배출 공정을 수행하는 프로젝트입니다.
 
 ## 📺 프로젝트 데모 영상
-(<video controls src="chicken1.mp4" title="Title"></video>)
+(<video cont
+
+https://github.com/user-attachments/assets/fc8a0eca-2450-4391-9a27-aaa532202326
+
+rols src="chicken1.mp4" title="Title"></video>)
 
 ## 🚀 주요 기능
 - **Zero-shot Object Detection**: YOLO-World를 사용하여 "Chicken", "Fries" 등 텍스트 입력만으로 사물 인식
