@@ -85,7 +85,7 @@ class ChickenRobotMaster:
                         pos = np.dot(self.R_base, point_cam) + self.T_base
                         
                         # 오프셋 및 필터 적용
-                        pos[0] -= 72.57; pos[1] += 81.75; pos[2] += -100.45 #pos[0] -= 22.57; pos[1] += 41.75; pos[2] += -100.45
+                        pos[0] -= 22.57; pos[1] += 41.75; pos[2] += -100.45 #pos[0] -= 22.57; pos[1] += 41.75; pos[2] += -100.45
                         self.pos_history.append(pos)
                         smooth_pos = np.mean(self.pos_history, axis=0)
                         chicken_detected = True
