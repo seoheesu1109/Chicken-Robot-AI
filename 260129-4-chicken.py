@@ -3,7 +3,7 @@ from ultralytics import YOLO
 
 # 1. 방금 만든 따끈따끈한 모델 불러오기 (경로 내 공백 주의!)
 # r을 붙여서 경로 내 공백과 한글을 있는 그대로 인식하게 합니다.
-model_path = r"C:\runs\detect\train12\weights\best.pt"
+model_path = r"C:\runs\detect\train13\weights\best.pt"
 model = YOLO(model_path)
 
 # 2. 카메라 켜기

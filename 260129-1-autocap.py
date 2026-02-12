@@ -3,7 +3,7 @@ import time
 import os
 
 # 저장할 폴더 생성
-save_path = 'realchicken_data'
+save_path = '260204-realchicken_data'
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 
