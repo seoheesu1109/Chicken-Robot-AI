@@ -143,8 +143,8 @@ class ChickenMasterV4:
             dst = cv2.transform(np.array([[[p_cam[0], p_cam[1], p_cam[2]]]], dtype=np.float32), self.matrix)
             
             # 최종 좌표 설정 (보정값 포함)
-            final_x = dst[0][0][0] + 15
-            final_y = dst[0][0][1] - Y_OFFSET + 15
+            final_x = dst[0][0][0] + 3
+            final_y = dst[0][0][1] - Y_OFFSET + 45
             final_z = dst[0][0][2] + Z_FINE_TUNE
             
             self.current_target = [final_x, final_y, final_z, FIXED_ORI[0], FIXED_ORI[1], angle]
@@ -185,10 +185,10 @@ class ChickenMasterV4:
             if self.send_command_and_wait(f"DOWN,{tx:.2f},{ty:.2f},{tz:.2f},0,180,{fa:.2f}"):
                 time.sleep(0.5)
                 self.add_log("✊ 그립 실행")#그리퍼 오면 수정
-                #if self.send_command_and_wait("GRIP"):
-                    #time.sleep(1.0)
-                    #self.send_command_and_wait(f"MOVE,{tx:.2f},{ty:.2f},{SAFE_APPROACH[2]},0,180,{fa:.2f}")
-                    #time.sleep(1)
+                if self.send_command_and_wait("GRIP"):
+                    time.sleep(1.0)
+                    self.send_command_and_wait(f"MOVE,{tx:.2f},{ty:.2f},{SAFE_APPROACH[2]},0,180,{fa:.2f}")
+                    time.sleep(1)
             else:
                 self.add_log("❌ 하강 에러")
             self.add_log("🚚 배출 시작")
@@ -196,7 +196,7 @@ class ChickenMasterV4:
             time.sleep(0.3)
             self.send_command(f"MOVE_HOME,")#,{HOME_POS[0]},{HOME_POS[1]},{HOME_POS[2]},{HOME_POS[3]},{HOME_POS[4]},{HOME_POS[5]}
             time.sleep(1)
-            #self.send_command_and_wait("RELEASE")
+            self.send_command_and_wait("RELEASE")
             time.sleep(1)
             
         self.auto_running = False
@@ -342,9 +342,9 @@ class ChickenMasterV4:
         if self.send_command_and_wait(f"DOWN,{tx:.2f},{ty:.2f},{tz:.2f},0,180,{fa:.2f}"):
             time.sleep(0.3)
             self.add_log("✊ 그립 실행")
-            #if self.send_command_and_wait("GRIP"):
-                #time.sleep(1.0)
-                #self.send_command_and_wait(f"MOVE,{tx:.2f},{ty:.2f},{SAFE_APPROACH[2]},0,180,{fa:.2f}")
+            if self.send_command_and_wait("GRIP"):
+                time.sleep(1.0)
+                self.send_command_and_wait(f"MOVE,{tx:.2f},{ty:.2f},{SAFE_APPROACH[2]},0,180,{fa:.2f}")
         else:
             self.add_log("❌ 하강 에러")
 
@@ -352,7 +352,7 @@ class ChickenMasterV4:
         self.add_log("🚚 배출 시작")
         self.send_command(f"MOVE_HOME,")#,{HOME_POS[0]},{HOME_POS[1]},{HOME_POS[2]},{HOME_POS[3]},{HOME_POS[4]},{HOME_POS[5]}
         time.sleep(1.0) # 로봇이 도착할 시간 대기
-        #self.send_command_and_wait("RELEASE")
+        self.send_command_and_wait("RELEASE")
         
     def update_cam_image(self, frame):
         img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).resize((640, 360))

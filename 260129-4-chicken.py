@@ -7,7 +7,7 @@ model_path = r"C:\runs\detect\train13\weights\best.pt"
 model = YOLO(model_path)
 
 # 2. 카메라 켜기
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 print("카메라를 켭니다. 물체를 비춰보세요! (종료하려면 'q'를 누르세요)")
 
